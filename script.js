@@ -71,10 +71,10 @@ function pay() {
   alert("Товар успешно оплачен!");
 }
 
-document.getElementById('login-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  alert("Вы успешно вошли!");
-});
+// document.getElementById('login-form').addEventListener('submit', function(e) {
+//   e.preventDefault();
+//   alert("Вы успешно вошли!");
+// });
 
 document.getElementById('feedback-form').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -130,11 +130,11 @@ window.onclick = function(event) {
   }
 };
 
-document.getElementById('login-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  alert("Вы успешно вошли!");
-  closeLoginModal();
-});
+// document.getElementById('login-form').addEventListener('submit', function(e) {
+//   e.preventDefault();
+//   alert("Вы успешно вошли!");
+//   closeLoginModal();
+// });
 
 function closePaymentModal() {
   document.getElementById('payment-modal').style.display = 'none';
@@ -321,3 +321,35 @@ window.addEventListener('click', function (event) {
     closeAboutModal();
   }
 });
+
+function openContactsModal() {
+  document.getElementById('contacts-modal').style.display = 'block';
+}
+
+function closeContactsModal() {
+  document.getElementById('contacts-modal').style.display = 'none';
+}
+
+function openReviews() {
+  document.getElementById('reviews-modal').style.display = 'block';
+}
+
+function closeReviewsModal() {
+  document.getElementById('reviews-modal').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[class^="category-toggle"]').forEach(cat => {
+    cat.addEventListener('click', () => {
+      const sublist = cat.nextElementSibling;
+      if (sublist) sublist.style.display = sublist.style.display === 'block' ? 'none' : 'block';
+    });
+  });
+  document.querySelectorAll('[class^="subcategory-toggle"]').forEach(sub => {
+    sub.addEventListener('click', () => {
+      const products = sub.nextElementSibling;
+      if (products) products.classList.toggle('open');
+    });
+  });
+});
+
